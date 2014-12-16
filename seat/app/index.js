@@ -27,5 +27,5 @@ co(function *() {
   console.log('server ready');
 
 }).catch(function (e) {
-  console.err(e);
+  console.err(e.stack);
 });

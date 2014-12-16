@@ -1,13 +1,24 @@
 var seats = require('../dao/seat');
 
-exports.get = function *() {
+exports.entry = function *() {
+  yield this.render('main');
+};
+
+exports.take = function *() {
   var seat;
   if (seats.length <= 0) {
-    return this.body = 'no more';
+    return this.body = {
+      status: -2,
+      message: 'no more',
+      data: {}
+    };
   }
   seat = seats.pop();
-  console.log(seat);
-  yield this.render('main', {
-    seat: seat
-  });
+  this.body = {
+    status: 0,
+    message: 'ok',
+    data: {
+      seat: seat
+    };
+  };
 };
