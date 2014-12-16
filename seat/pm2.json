@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "name": "muc-sz-2014-seat",
+      "script": "./app/index.js",
+      "node_args": "--harmony",
+      "env": {
+        "NODE_EV": "development"
+      }
+    }
+  ]
+}
