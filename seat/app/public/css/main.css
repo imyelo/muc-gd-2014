@@ -87,6 +87,10 @@
 }
 
 
+.half {
+  zoom: 0.5;
+}
+
 html {
   background-image: url(/public/image/background.png);
   font-family: 'league_gothicregular';
@@ -105,8 +109,9 @@ html {
   width: 226px;
   height: 110px;
   margin: 0 auto;
-  background-image: url(/public/image/ticket.png);
+  background-image: url(/public/image/ticket-x2.png);
   background-repeat: no-repeat;
+  background-size: 220px;
 }
 
 .ticket {
@@ -139,7 +144,8 @@ html {
 }
 
 .button {
-  background-image: url(/public/image/button.png);
+  background-image: url(/public/image/button-x2.png);
+  background-size: 85px;
   width: 85px;
   height: 75px;
   margin: 40px auto;

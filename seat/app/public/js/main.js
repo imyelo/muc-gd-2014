@@ -5,7 +5,7 @@ $(function () {
   var $seat = $('.seat');
   var $button = $('.button');
   var $fingerprint = $('.fingerprint');
-  var $stamp = $('<img class="stamp animated sign" src="/public/image/stamp.png">');
+  var $stamp = $('<img class="stamp half animated sign" src="/public/image/stamp-x2.png">');
 
   var MSG = {
     DEFAULT_ERROR: '服务器遇到了一个未知的错误，请由工作人员代理安排座位',
