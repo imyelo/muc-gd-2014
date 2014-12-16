@@ -1,7 +1,11 @@
 $(function () {
 
-  var $h = $('h1');
-  var $button = $('button');
+  var $box = $('.box');
+  var $ticket = $('.ticket');
+  var $seat = $('.seat');
+  var $button = $('.button');
+  var $fingerprint = $('.fingerprint');
+  var $stamp = $('<img class="stamp animated fadeIn" src="/public/image/stamp.png">');
 
   var lock = false;
 
@@ -19,7 +23,16 @@ $(function () {
   };
 
   var getRandomSeat = function () {
-    return getRandomString(all.tables) + getRandomString(all.numbers);
+    return getRandomString(all.tables) + '-' + getRandomString(all.numbers);
+  };
+
+  var reload = window.reload = function () {
+    var $clone = $ticket.clone().appendTo($box).addClass('animated fadeOutRight');
+    $ticket.find('.stamp').remove();
+    $seat.text('X-0');
+    setTimeout(function () {
+      $clone.remove();
+    }, 2000);
   };
 
   var repeat = function (func, duration, times, callback) {
@@ -41,15 +54,20 @@ $(function () {
     if (lock) {
       return;
     }
-    $h.text('--');
-    $button.attr('disabled', 'disabled');
+    $seat.text('X-0');
+    $fingerprint.removeClass('animated infinite breath');
     lock = true;
 
     NProgress.start();
+    reload();
 
     function end (msg) {
       NProgress.done();
-      $button.attr('disabled', null);
+      $ticket.prepend($stamp.clone());
+      setTimeout(function () {
+        $fingerprint.addClass('animated infinite breath');
+        lock = false;
+      }, 1200);
       if (msg) {
         alert(msg);
       }
@@ -59,9 +77,6 @@ $(function () {
       url: '/',
       type: 'post',
       complete: function () {
-        setTimeout(function () {
-          lock = false;
-        }, 200);
       },
       success: function (res) {
         if (!res) {
@@ -71,10 +86,10 @@ $(function () {
           return end(res.message || 'error');
         }
         repeat(function () {
-          $h.text(getRandomSeat());
+          $seat.text(getRandomSeat());
           NProgress.inc(0.01);
         }, 50, 30, function () {
-          $h.text(res.data.seat);
+          $seat.text(res.data.seat);
           end();
         });
       },

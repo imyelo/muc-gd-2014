@@ -12,7 +12,8 @@ co(function *() {
 
   app.use(middlewares.staticCache(path.join(__dirname, './public'), {
     prefix: '/public',
-    buffer: true
+    buffer: false,
+    maxAge: 0
   }));
   
   app.use(middlewares.favicon(path.join(__dirname, './public/favicon.ico')));

@@ -7,7 +7,7 @@ var seats = (function seatGenerator() {
   var seats = [];
   tables.forEach(function (table) {
     numbers.forEach(function (number) {
-      seats.push(table + number);
+      seats.push(table + '-' + number);
     });
   });
 
