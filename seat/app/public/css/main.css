@@ -45,12 +45,47 @@
 .breath {
   -webkit-animation-name: breath;
           animation-name: breath;
-  -webkit-transform-origin: center bottom;
-      -ms-transform-origin: center bottom;
-          transform-origin: center bottom;
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
 }
+
+@-webkit-keyframes sign {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+            transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes sign {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+            transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.sign {
+  -webkit-animation-name: sign;
+          animation-name: sign;
+}
+
 
 html {
   background-image: url(/public/image/background.png);

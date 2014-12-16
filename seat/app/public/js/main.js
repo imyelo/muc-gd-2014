@@ -5,12 +5,19 @@ $(function () {
   var $seat = $('.seat');
   var $button = $('.button');
   var $fingerprint = $('.fingerprint');
-  var $stamp = $('<img class="stamp animated fadeIn" src="/public/image/stamp.png">');
+  var $stamp = $('<img class="stamp animated sign" src="/public/image/stamp.png">');
+
+  var MSG = {
+    DEFAULT_ERROR: '服务器遇到了一个未知的错误，请由工作人员代理安排座位',
+    SERVER_ERROR: '服务器状态不稳定，请由工作人员代理安排座位',
+    NETWORK_ERROR: '请求异常咯, 请检查网络状态',
+    NO_MORE: '系统预设门票已被领完，请由工作人员代理安排座位'
+  };
 
   var lock = false;
 
   var all = {
-    tables: 'ABCDEFGH',
+    tables: 'ABCDEFGHIJKLMNOPQRSTUVXWYZ',
     numbers: '1234567890'
   };
 
@@ -67,7 +74,7 @@ $(function () {
       setTimeout(function () {
         $fingerprint.addClass('animated infinite breath');
         lock = false;
-      }, 1200);
+      }, 1600);
       if (msg) {
         alert(msg);
       }
@@ -80,10 +87,13 @@ $(function () {
       },
       success: function (res) {
         if (!res) {
-          return end('network error');
+          return end(MSG.SERVER_ERROR);
+        }
+        if (res.status === -2) {
+          return end(MSG.NO_MORE);
         }
         if (res.status < 0 || !res.data || !res.data.seat) {
-          return end(res.message || 'error');
+          return end(res.message || MSG.DEFAULT_ERROR);
         }
         repeat(function () {
           $seat.text(getRandomSeat());
@@ -94,7 +104,7 @@ $(function () {
         });
       },
       error: function () {
-        end('network error');
+        end(MSG.NETWORK_ERROR);
       }
     });
 
