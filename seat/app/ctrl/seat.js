@@ -19,6 +19,6 @@ exports.take = function *() {
     message: 'ok',
     data: {
       seat: seat
-    };
+    }
   };
 };

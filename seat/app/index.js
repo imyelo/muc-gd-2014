@@ -10,6 +10,11 @@ var app = koa();
 
 co(function *() {
 
+  app.use(middlewares.staticCache(path.join(__dirname, './public'), {
+    prefix: '/public',
+    buffer: true
+  }));
+  
   app.use(middlewares.favicon(path.join(__dirname, './public/favicon.ico')));
 
   app.use(view(path.join(__dirname, './view'), {
