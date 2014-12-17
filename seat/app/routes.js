@@ -6,4 +6,6 @@ module.exports = function router (app) {
 
   app.get('/all', seat.all);
   app.post('/reload', seat.reload);
+
+  app.get('/ticket/:id', seat.one);
 };

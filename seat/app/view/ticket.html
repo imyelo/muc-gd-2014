@@ -13,8 +13,6 @@
     <link rel="stylesheet" href="/public/css/main.css">
     <script src="/public/js/jquery.js"></script>
     <script src="/public/js/nprogress.js"></script>
-    <script src="/public/js/qrcode.js"></script>
-    <script src="/public/js/main.js"></script>
   </head>
 
   <body>
@@ -26,13 +24,9 @@
           <div class="ticket">
             <img class="stamp half" src="/public/image/stamp-x2.png">
             <img class="half" src="/public/image/ticket-x2.png">
-            <p><span class="seat" style="text-align: center;">--</span></p>
+            <p><span class="seat" style="text-align: center;"><%= seat %></span></p>
           </div>
         </div>
-        <div class="button">
-          <img src="/public/image/fingerprint-x2.png" class="fingerprint half animated infinite breathing">
-        </div>
-        <div id="qrcode" class="qrcode"></div>
       </div>
     </main>
 

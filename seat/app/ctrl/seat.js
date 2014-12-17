@@ -1,5 +1,6 @@
 var getSeats = require('../dao/seat').getSeats;
 var reload = require('../dao/seat').reload;
+var crypto = require('../lib/crypto');
 var config = require('../config');
 
 exports.entry = function *() {
@@ -21,7 +22,8 @@ exports.take = function *() {
     status: 0,
     message: 'ok',
     data: {
-      seat: seat
+      seat: seat,
+      url: '/ticket/' + crypto.encrypt(seat)
     }
   };
 };
@@ -42,4 +44,13 @@ exports.reload = function *() {
     status: 0,
     message: 'ok'
   };
+};
+
+exports.one = function *() {
+  var seat = crypto.decrypt(this.params.id);
+  if (!/^[A-Z]\-[0-9]$/.test(seat)) {
+    return yield this.render('error', {message: '地址失效'});
+  }
+  yield this.render('ticket', {seat: seat});
+
 };

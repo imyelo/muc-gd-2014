@@ -5,6 +5,7 @@ $(function () {
   var $seat = $('.seat');
   var $button = $('.button');
   var $fingerprint = $('.fingerprint');
+  var $qrcode = $('.qrcode');
   var $stamp = $('<img class="stamp half animated signing" src="/public/image/stamp-x2.png">');
 
   var MSG = {
@@ -61,12 +62,18 @@ $(function () {
     play();
   };
 
+  $qrcode.hide();
+
   $button.on('click', function () {
     if (lock) {
       return;
     }
     $fingerprint.removeClass('animated infinite breathing');
     lock = true;
+    $qrcode.fadeOut(200);
+    setTimeout(function () {
+      $qrcode.empty();
+    }, 200);
 
     NProgress.start();
     reload();
@@ -103,6 +110,17 @@ $(function () {
           NProgress.inc(0.01);
         }, 50, 30, function () {
           $seat.text(res.data.seat);
+          new QRCode('qrcode',  {
+            text: res.data.url,
+            width: 80,
+            height: 80,
+            colorDark : '#111',
+            colorLight : '#3C3A34',
+            correctLevel : QRCode.CorrectLevel.H
+          });
+          setTimeout(function () {
+            $qrcode.fadeIn(1200);
+          }, 800);
           end();
         });
       },
