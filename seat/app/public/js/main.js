@@ -5,7 +5,7 @@ $(function () {
   var $seat = $('.seat');
   var $button = $('.button');
   var $fingerprint = $('.fingerprint');
-  var $stamp = $('<img class="stamp half animated sign" src="/public/image/stamp-x2.png">');
+  var $stamp = $('<img class="stamp half animated signing" src="/public/image/stamp-x2.png">');
 
   var MSG = {
     DEFAULT_ERROR: '服务器遇到了一个未知的错误，请由工作人员代理安排座位',
@@ -34,7 +34,7 @@ $(function () {
   };
 
   var reload = window.reload = function () {
-    var $clone = $ticket.clone().appendTo($box).addClass('animated fadeOutRight');
+    var $clone = $ticket.clone().appendTo($box).addClass('animated taking');
     $ticket.find('.stamp').remove();
     $seat.text('X-0');
     setTimeout(function () {
@@ -61,8 +61,7 @@ $(function () {
     if (lock) {
       return;
     }
-    $seat.text('X-0');
-    $fingerprint.removeClass('animated infinite breath');
+    $fingerprint.removeClass('animated infinite breathing');
     lock = true;
 
     NProgress.start();
@@ -72,7 +71,7 @@ $(function () {
       NProgress.done();
       $ticket.prepend($stamp.clone());
       setTimeout(function () {
-        $fingerprint.addClass('animated infinite breath');
+        $fingerprint.addClass('animated infinite breathing');
         lock = false;
       }, 1600);
       if (msg) {
