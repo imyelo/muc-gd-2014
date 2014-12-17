@@ -1,5 +1,6 @@
 var getSeats = require('../dao/seat').getSeats;
 var reload = require('../dao/seat').reload;
+var config = require('../config');
 
 exports.entry = function *() {
   yield this.render('main');
@@ -30,6 +31,12 @@ exports.all = function *() {
 };
 
 exports.reload = function *() {
+  if (this.request.body.password !== config.password) {
+    return this.body = {
+      status: -1,
+      message: '口令无效'
+    };
+  }
   reload();
   this.body = {
     status: 0,

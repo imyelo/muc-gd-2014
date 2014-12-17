@@ -22,7 +22,7 @@
     <main>
       <div class="container" style="text-align: center;">
           <p style="color: #fff;"><%= seats.length %> tickets left </p> 
-          <p><button id="reload" style="background: #fff; color: #000; border: 0; padding: 12px 24px; margin: 12px 0;">!reload</button></p>
+          <p><button id="reload" style="background: #EF3737; color: #FFF; border: 0; padding: 12px 24px; margin: 12px 0;">reload</button></p>
       </div>
     </main>
 
@@ -30,7 +30,8 @@
     $(function () {
       var lock = false;
       $('#reload').on('click', function () {
-        if (confirm('重置操作将导致先前抽取的门票无效!')) {
+        var password;
+        if (password = prompt('重置操作将导致先前抽取的门票无效!请输入口令:')) {
           if (lock) {
             return;
           }
@@ -39,11 +40,17 @@
           $.ajax({
             url: '/reload',
             type: 'post',
+            data: {
+              password: password
+            },
             complete: function () {
               NProgress.done();
               lock = false;
             },
-            success: function () {
+            success: function (res) {
+              if (res.status < 0) {
+                return alert(res.message || '重置失败');
+              }
               alert('数据已重置，请刷新页面更新数据');
               window.location.reload();
             },

@@ -23,6 +23,8 @@ co(function *() {
       html: 'ejs'
     }
   }));
+  
+  app.use(middlewares.bodyParser());
 
   app.use(middlewares.router(app));
 

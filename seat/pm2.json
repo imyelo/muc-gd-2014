@@ -3,7 +3,7 @@
     {
       "name": "muc-sz-2014-seat",
       "script": "./app/index.js",
-      "watch": ["app"],
+      "watch": true,
       "node_args": "--harmony",
       "env": {
         "NODE_EV": "development"
