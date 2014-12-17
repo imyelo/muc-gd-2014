@@ -1,6 +1,8 @@
 var _ = require('underscore');
 
-var seats = (function seatGenerator() {
+var seats;
+
+function seatGenerator() {
   var tables = 'ABCDEFGH'.split('');
   var numbers = '12345678'.split('');
 
@@ -11,9 +13,16 @@ var seats = (function seatGenerator() {
     });
   });
 
+  return _.shuffle(seats);
+}
+
+function reload() {
+  seats = seatGenerator();
+}
+
+reload();
+
+exports.reload = reload;
+exports.getSeats = function () {
   return seats;
-})();
-
-seats = _.shuffle(seats);
-
-module.exports = seats;
+};

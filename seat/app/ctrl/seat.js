@@ -1,4 +1,5 @@
-var seats = require('../dao/seat');
+var getSeats = require('../dao/seat').getSeats;
+var reload = require('../dao/seat').reload;
 
 exports.entry = function *() {
   yield this.render('main');
@@ -6,6 +7,7 @@ exports.entry = function *() {
 
 exports.take = function *() {
   var seat;
+  var seats = getSeats();
   if (seats.length <= 0) {
     return this.body = {
       status: -2,
@@ -20,5 +22,17 @@ exports.take = function *() {
     data: {
       seat: seat
     }
+  };
+};
+
+exports.all = function *() {
+  yield this.render('all', {seats: getSeats()});
+};
+
+exports.reload = function *() {
+  reload();
+  this.body = {
+    status: 0,
+    message: 'ok'
   };
 };
