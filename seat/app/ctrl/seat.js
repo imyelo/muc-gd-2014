@@ -23,7 +23,7 @@ exports.take = function *() {
     message: 'ok',
     data: {
       seat: seat,
-      url: '/ticket/' + crypto.encrypt(seat)
+      url: 'http://muc.lab4310.com/ticket/' + crypto.encrypt(seat)
     }
   };
 };
