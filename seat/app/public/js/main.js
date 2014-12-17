@@ -34,7 +34,11 @@ $(function () {
   };
 
   var reload = window.reload = function () {
-    var $clone = $ticket.clone().appendTo($box).addClass('animated taking');
+    var $clone = $ticket.clone().appendTo($box);
+    // 优化动画
+    setTimeout(function () {
+      $clone.addClass('animated taking');
+    }, 0);
     $ticket.find('.stamp').remove();
     $seat.text('X-0');
     setTimeout(function () {
