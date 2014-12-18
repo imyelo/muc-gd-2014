@@ -35,6 +35,7 @@ $(function () {
   };
 
   var reload = window.reload = function () {
+    $ticket.removeClass('animated publishing pinching');
     var $clone = $ticket.clone().appendTo($box);
     // 优化动画
     setTimeout(function () {
@@ -70,10 +71,10 @@ $(function () {
     }
     $fingerprint.removeClass('animated infinite breathing');
     lock = true;
-    $qrcode.fadeOut(200);
+    $qrcode.fadeOut(800);
     setTimeout(function () {
       $qrcode.empty();
-    }, 200);
+    }, 800);
 
     NProgress.start();
     reload();
@@ -81,7 +82,9 @@ $(function () {
     function end (msg) {
       NProgress.done();
       $ticket.prepend($stamp.clone());
+      $fingerprint.fadeOut();
       setTimeout(function () {
+        $fingerprint.fadeIn();
         $fingerprint.addClass('animated infinite breathing');
         lock = false;
       }, 1600);
@@ -108,20 +111,24 @@ $(function () {
         repeat(function () {
           $seat.text(getRandomSeat());
           NProgress.inc(0.01);
-        }, 50, 30, function () {
+        }, 50, 20, function () {
+          $ticket.addClass('animated publishing');
           $seat.text(res.data.seat);
           new QRCode('qrcode',  {
             text: res.data.url,
-            width: 80,
-            height: 80,
+            width: 100,
+            height: 100,
             colorDark : '#111',
             colorLight : '#3C3A34',
             correctLevel : QRCode.CorrectLevel.H
           });
           setTimeout(function () {
             $qrcode.fadeIn(1200);
-          }, 800);
-          end();
+            $ticket.removeClass('animated publishing').addClass('animated pinching');
+            end();
+          }, 1400);
+          $fingerprint.fadeOut();
+          NProgress.done();
         });
       },
       error: function () {

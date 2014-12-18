@@ -143,6 +143,139 @@
 }
 
 
+@-webkit-keyframes publishing {
+  0% {
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
+  }
+
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+            transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
+  }
+
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg) scale3d(1.5, 1.5, 1.5);
+            transform: perspective(400px) rotate3d(0, 1, 0, 10deg) scale3d(1.5, 1.5, 1.5);
+  }
+
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg) scale3d(1.6, 1.6, 1.6);
+            transform: perspective(400px) rotate3d(0, 1, 0, -5deg) scale3d(1.6, 1.6, 1.6);
+  }
+
+  100% {
+    -webkit-transform: perspective(400px) scale3d(1.5, 1.5, 1.5);
+            transform: perspective(400px) scale3d(1.5, 1.5, 1.5);
+  }
+}
+
+@keyframes publishing {
+  0% {
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
+  }
+
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+            transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
+  }
+
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg) scale3d(1.5, 1.5, 1.5);
+            transform: perspective(400px) rotate3d(0, 1, 0, 10deg) scale3d(1.5, 1.5, 1.5);
+  }
+
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg) scale3d(1.6, 1.6, 1.6);
+            transform: perspective(400px) rotate3d(0, 1, 0, -5deg) scale3d(1.6, 1.6, 1.6);
+  }
+
+  100% {
+    -webkit-transform: perspective(400px) scale3d(1.5, 1.5, 1.5);
+            transform: perspective(400px) scale3d(1.5, 1.5, 1.5);
+  }
+}
+
+.publishing {
+  -webkit-backface-visibility: visible !important;
+          backface-visibility: visible !important;
+  -webkit-animation-name: publishing;
+          animation-name: publishing;
+}
+
+
+@-webkit-keyframes pinching {
+  100% {
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
+  }
+
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+            transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
+  }
+
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg) scale3d(1.5, 1.5, 1.5);
+            transform: perspective(400px) rotate3d(0, 1, 0, 10deg) scale3d(1.5, 1.5, 1.5);
+  }
+
+  20% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg) scale3d(1.6, 1.6, 1.6);
+            transform: perspective(400px) rotate3d(0, 1, 0, -5deg) scale3d(1.6, 1.6, 1.6);
+  }
+
+  0% {
+    -webkit-transform: perspective(400px) scale3d(1.5, 1.5, 1.5);
+            transform: perspective(400px) scale3d(1.5, 1.5, 1.5);
+  }
+}
+
+@keyframes pinching {
+  100% {
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
+  }
+
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+            transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
+  }
+
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg) scale3d(1.5, 1.5, 1.5);
+            transform: perspective(400px) rotate3d(0, 1, 0, 10deg) scale3d(1.5, 1.5, 1.5);
+  }
+
+  20% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg) scale3d(1.6, 1.6, 1.6);
+            transform: perspective(400px) rotate3d(0, 1, 0, -5deg) scale3d(1.6, 1.6, 1.6);
+  }
+
+  0% {
+    -webkit-transform: perspective(400px) scale3d(1.5, 1.5, 1.5);
+            transform: perspective(400px) scale3d(1.5, 1.5, 1.5);
+  }
+}
+
+.pinching {
+  -webkit-backface-visibility: visible !important;
+          backface-visibility: visible !important;
+  -webkit-animation-name: pinching;
+          animation-name: pinching;
+}
+
+
+
 
 .half {
   zoom: 0.5;
@@ -154,10 +287,11 @@ html {
 }
 
 .container {
-  width: 100%;
-  max-width: 320px;
-  min-height: 1px;
-  margin: 100px auto;
+  /*width: 100%;*/
+  /*max-width: 320px;*/
+  /*min-height: 1px;*/
+  margin: 200px auto;
+  padding: 20px;
 }
 
 .box {
@@ -170,6 +304,13 @@ html {
   background-repeat: no-repeat;
   background-size: 220px;
 }
+
+.box.single {
+  padding-left: 0;
+  width: 220px;
+  background: none;
+}
+
 
 .ticket {
   position: absolute;
@@ -191,7 +332,7 @@ html {
 .ticket .stamp {
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: 4px;
 }
 
 .seat {
@@ -211,9 +352,35 @@ html {
 }
 
 .qrcode img {
-  border: 1px solid #222;
+  border: 3px dashed #222;
   padding: 10px;
   margin: 0 auto;
   border-radius: 10px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }
+
+footer {
+  text-align: center;
+  color: #555;
+  margin: 100px 0;
+  border-top: 1px dashed #555;
+  padding: 20px;
+  font-size: 12px;
 }
+
+main.single .container{
+  margin: 200px auto;
+}
+
+main.single .btn{
+  text-align: center;
+  color: #555;
+  margin: 50px;
+  border-top: 1px solid #555;
+  box-shadow: 0 -1px 3px 0 #000;
+  padding: 10px;
+  font-size: 12px;
+}
+
