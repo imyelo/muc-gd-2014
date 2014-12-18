@@ -1,4 +1,4 @@
-WeixinApi.ready(function (Api) {
+WeixinApi.ready(function (api) {
   var data = {
     "appId": "",
     "imgUrl": "http://muc2014.lab4310.com/public/image/icon.png",
@@ -10,7 +10,7 @@ WeixinApi.ready(function (Api) {
   var callbacks = {
   };
 
-  APi.shareToFriend(data, callbacks);
-  APi.shareToTimeLine(data, callbacks);
-  APi.shareToWeibo(data, callbacks);
+  api.shareToFriend(data, callbacks);
+  api.shareToTimeLine(data, callbacks);
+  api.shareToWeibo(data, callbacks);
 });
