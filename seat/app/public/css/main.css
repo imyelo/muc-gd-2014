@@ -364,14 +364,14 @@ html {
 footer {
   text-align: center;
   color: #555;
-  margin: 100px 0;
+  margin: 100px 0 0;
   border-top: 1px dashed #555;
   padding: 20px;
   font-size: 12px;
 }
 
 main.single .container{
-  margin: 200px auto;
+  margin: 120px auto 0;
 }
 
 main.single .btn{
