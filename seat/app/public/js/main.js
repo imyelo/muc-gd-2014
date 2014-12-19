@@ -12,6 +12,7 @@ $(function () {
     DEFAULT_ERROR: '服务器遇到了一个未知的错误，请由工作人员代理安排座位',
     SERVER_ERROR: '服务器状态不稳定，请由工作人员代理安排座位',
     NETWORK_ERROR: '请求异常咯, 请检查网络状态',
+    UNEXPECTED_GROUP: '分组信息有误，请联系工作人员检查链接',
     NO_MORE: '系统预设门票已被领完，请由工作人员代理安排座位'
   };
 
@@ -94,13 +95,16 @@ $(function () {
     };
 
     $.ajax({
-      url: '/',
+      url: window.location.href,
       type: 'post',
       complete: function () {
       },
       success: function (res) {
         if (!res) {
           return end(MSG.SERVER_ERROR);
+        }
+        if (res.status === -3) {
+          return end(MSG.UNEXPECTED_GROUP);
         }
         if (res.status === -2) {
           return end(MSG.NO_MORE);

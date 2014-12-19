@@ -8,8 +8,16 @@ exports.entry = function *() {
 };
 
 exports.take = function *() {
+  var group = this.params.group;
   var seat;
-  var seats = getSeats();
+  var seats = getSeats()[group];
+  if (typeof seats === 'undefined') {
+    return this.body = {
+      status: -3,
+      message: 'unexpected group',
+      data: {}
+    };
+  }
   if (seats.length <= 0) {
     return this.body = {
       status: -2,

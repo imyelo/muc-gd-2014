@@ -2,10 +2,7 @@ var _ = require('underscore');
 
 var seats;
 
-function seatGenerator() {
-  var tables = 'ABCDEFGH'.split('');
-  var numbers = '12345678'.split('');
-
+function seatGenerator(tables, numbers) {
   var seats = [];
   tables.forEach(function (table) {
     numbers.forEach(function (number) {
@@ -17,7 +14,10 @@ function seatGenerator() {
 }
 
 function reload() {
-  seats = seatGenerator();
+  seats = {
+    a: seatGenerator('ABC'.split(''), '123456789'.split('')),
+    b: seatGenerator('DEFGHIJKLMNOPQR'.split(''), '123456789'.split(''))
+  };
 }
 
 reload();
