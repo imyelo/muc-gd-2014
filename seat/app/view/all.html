@@ -20,7 +20,9 @@
 
     <main>
       <div class="container" style="text-align: center;">
-          <p style="color: #fff;"><%= seats.length %> tickets left </p> 
+          <% for (var key in seats) { %>
+          <p style="color: #fff;">group <%= key %>: <%= seats[key].length %> tickets left </p> 
+          <% } %>
           <p><button id="reload" style="background: #EF3737; color: #FFF; border: 0; padding: 12px 24px; margin: 12px 0;">reload</button></p>
       </div>
     </main>
